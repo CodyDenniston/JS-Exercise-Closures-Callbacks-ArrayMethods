@@ -69,7 +69,7 @@ function processLength(list, callback) {
  * should return 'barbar'.
 */
 function processLastItem(stringList, callback) {
-  return callback(stringList.pop);
+  return callback(stringList.pop());
 }
 
 /**
@@ -90,7 +90,9 @@ function processLastItem(stringList, callback) {
  * should return 1000.
 */
 function processSum(numberList, callback) {
-  
+  let total = 0;
+  numberList.map(i => {return total += i})
+  return callback(total);
 }
 
 /**
@@ -135,8 +137,8 @@ function processProduct(num1, num2, callback) {
  * "lady gaga" and `['foo', 'bar']` and `(bool) => bool ? 'nice!' : 'sad'`,
  * should return "sad".
 */
-function processContains(/* CODE HERE */) {
-  /* CODE HERE */
+function processContains(item, list, callback) {
+  return callback(list.includes(item));
 }
 
 /**
@@ -213,8 +215,14 @@ function firstNamesAllCaps(/* CODE HERE */) {
  * @returns an array containing only the runners that use the given `tShirtSize`.
  * The runners in the array appear in the same order they appear in the `runners` array.
 */
-function getRunnersByTShirtSize(/* CODE HERE */) {
-  /* CODE HERE */
+function getRunnersByTShirtSize(runners, tShirtSize) {
+   let newTshirt = [];
+   runners.filter(function(runner){
+     if(tShirtSize === runner.shirt_size){
+       newTshirt.push(runner);
+     }
+   });
+   return newTshirt;
 }
 
 /**
